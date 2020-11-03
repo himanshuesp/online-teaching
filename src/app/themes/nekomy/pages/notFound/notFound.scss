@@ -1,0 +1,17 @@
+.not-found-page {
+	.breadcrumbs {
+		display: none;
+	}
+}
+
+.notFound {
+	.page-content {
+		text-align: center;
+		
+		img {
+			width: auto;
+			display: block;
+			margin: 0 auto 40px auto;
+		}
+	}
+}

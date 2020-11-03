@@ -1,0 +1,92 @@
+@mixin desktop() {
+    @media (min-width: 768px) { @content ; }
+}
+
+@mixin mobile() {
+    @media (max-width: 768px) { @content ; }
+}
+
+// Adds an scaling animation. Good for CTAs
+@mixin scale-anim($value: 1.1) {
+    transition: all 200ms ease-in;
+    transform: scale(1);
+
+    &:hover {
+        transition: all 200ms ease-in;
+        transform: scale(#{$value});
+    }
+}
+
+@mixin truncate($lines: 4, $lineHeight: 25) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: #{$lineHeight}px;     /* fallback */
+	max-height: #{$lineHeight * $lines}px;      /* fallback */
+	-webkit-line-clamp: $lines; /* number of lines to show */
+	-webkit-box-orient: vertical;
+}
+
+@mixin toggle-switch($width: 50px, $height: 17px, $size: 13px) {
+	
+	width: $width;
+	height: $height;
+	background: $white;
+	font-size: 12px;
+	display: inline-block;
+	border-radius: 25px;
+	vertical-align: middle;
+	position: relative;
+	cursor: pointer;
+
+	label {
+		margin: 0;
+	}
+	
+	label:before,
+	label:after {
+		text-align: center;
+	}
+
+	label:before {
+		display: inline-block;
+		width: $width;
+		height: $height;
+		border: none;
+		color: $blue;
+		padding-top: 1px;
+		text-align: center;
+	}
+	input[type=checkbox]:not(:checked) + label:before {
+		content: "";
+		padding-left: 10px;
+	}			
+	input[type=checkbox]:checked + label:before {
+		content: "";
+		padding-left: 0;
+		padding-right: 10px;
+	}
+
+	input[type=checkbox]:not(:checked) + label:after,
+	input[type=checkbox]:checked + label:after {
+		content: '';
+		width: $size;
+		height: $size;
+		background: $blue;
+		display: block;
+		border-radius: 50%;
+		position: absolute;		
+	}
+	input[type=checkbox]:not(:checked) + label:after {
+		top: 2px;
+		left: 2px;	
+	}			
+	input[type=checkbox]:checked + label:after {
+		top: 2px;
+		right: 12px;			
+	}
+}
+
+@mixin random-color($selector) {
+  	#{$selector}: unquote("rgba(#{random(256) - 1}, #{random(256)-1}, #{random(256 - 1)}, #{random(100)/100})");
+}

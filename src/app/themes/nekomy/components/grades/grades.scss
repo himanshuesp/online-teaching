@@ -1,0 +1,8 @@
+.grades-panel {
+	display: none;
+	padding: 20px;
+	
+	&.open {
+		display: block;
+	}
+}

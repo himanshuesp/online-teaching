@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "7.4"
+
+branches:
+  only:
+    - master
+
+before_script:
+  - git config --global user.name "TravisCI"
+  - git config --global user.email "travisCI@nekomy.com"
+  - npm install -g firebase-tools
+  - npm install -g yarn
+
+script:
+  - yarn
+  - yarn run build
+
+after_success:
+  - firebase deploy --token=${FIREBASE_API_TOKEN} --non-interactive
+
+notifications:
+    slack: nekomy:${SLACK_API_TOKEN}

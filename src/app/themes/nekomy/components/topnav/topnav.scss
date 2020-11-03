@@ -1,0 +1,384 @@
+.top-nav {
+    height: 40px;
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	
+	.top-nav-bar {
+		padding: 6px 0;
+    	height: 40px;
+		
+		@include mobile() {
+			padding: 10px 0;
+		}
+	}
+	
+	.star {
+		fill: $white;
+	}
+	
+	.search, .mail, .close-search {
+		fill: $white;
+	}
+	
+	.close-search {
+		width: 16px;
+		height: 16px;
+	}
+	
+	.top-nav-item {
+		margin: 0 1%;
+		fill: $white;
+		cursor: pointer;
+		display: inline-block;
+		@include scale-anim();
+		
+		@include mobile() {
+			display: none;
+		}
+	}
+	
+	.logo {
+		position: absolute;
+		left: 0;
+		top: 6px;
+		right: 0;
+		width: 200px;
+		margin: 0 auto;
+		text-align: center;
+		color: $white;
+		text-decoration: none;
+		@include scale-anim();
+		
+		@include mobile() {
+			width: 40px;
+		}
+		
+		.icon {
+			width: 40px;
+			height: 28px;
+			stroke: white;
+			fill: white;
+		}
+		
+		.logo-wording {
+			width: 80px;
+
+			@include mobile() {
+				display: none;
+			}
+		}
+	}
+	
+	.user-info {
+		float: right;
+		margin-right: 20px;
+		position: relative;
+		
+		@include mobile() {
+			display: none;
+		}
+		
+		.avatar, .chat {
+			width: 30px;
+			height: 30px;
+		}
+		
+		.avatar {
+			border-radius: 20px;
+		}
+		
+		.chat {
+			fill: $white;
+			margin-right: 10px;
+		}
+		
+		.username {
+			font-size: 13px;
+			font-weight: bold;
+			@include scale-anim();
+			
+			.icon {
+				fill: $white;
+				width: 13px;
+				height: 13px;
+			}
+		}
+		
+		.exit-nav {
+			background-color: $white;
+			list-style-type: none;
+			position: absolute;
+			margin: 0;
+			z-index: 2;
+			padding: 0;
+			width: 160px;
+			right: 0;
+			max-height: 0;
+			overflow: hidden;
+			transition: .3s;
+			
+			&.active {
+				max-height: 120px;
+				border: 1px solid $light-grey;
+				margin-top: 5px;
+			}
+			
+			.exit-item {
+				padding: 10px 10px 5px 10px;
+				
+				a {
+					color: $grey;
+					font-size: 14px;
+				}
+				
+				&:last-child {
+					margin-bottom: 0;
+				}
+				
+				.icon {
+					fill: $grey;
+					width: 15px;
+					height: 15px;
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+	
+	.card-controls {
+		position: absolute;
+		right: 20px;
+		top: 65px;
+		width: 50%;
+		text-align: right;
+		
+		@include mobile() {
+			top: 57px;
+		}
+	}
+	
+	.sort-item {
+		font-size: 13px;
+		
+		.icon {
+			fill: $lighter-grey;
+			width: 13px;
+			height: 13px;
+		}
+	}
+	
+	.icon.date-sort, .icon.sort-ascending, .icon.sort-descending {
+		fill: $white;
+	}
+	
+	.view-as {
+		margin-right: 5px;
+	}
+	
+	.from-sort, .date-sort, .read-sort, .alphabetical-sort {
+		cursor: pointer;
+	}
+	
+	.toggle-switch {
+		@include toggle-switch(55px);
+		
+		input[type=checkbox]:not(:checked) + label:before {
+			content: "cards";
+			padding-left: 18px;
+		}			
+		input[type=checkbox]:checked + label:before {
+			content: "list";
+		}
+		input[type=checkbox]:checked + label:before {
+			background-color: $white;
+		}
+	}
+	
+	.view-as/*, .toggle-switch*/ {
+		@include mobile () {
+			display: none;
+		}
+	}		
+	
+	.nav-icon {
+		margin-top: 7px;
+        width: 20px;
+        height: 20px;
+		float: left;
+		margin-left: 20px;
+        transform: rotate(0deg);
+        transition: .5s ease-in-out;
+        cursor: pointer;
+		
+		@include mobile() {
+			display: block;
+			float: right;
+		    margin-top: 3px;
+		    margin-right: 20px;
+		}
+        
+        span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: $white;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+            
+            &:nth-child(1) {
+                top: 0px;
+            }
+            
+            &:nth-child(2), &:nth-child(3) {
+                top: 6px;
+            }
+            
+            &:nth-child(4) {
+                top: 12px;
+            }
+        }
+        
+        &.opened {
+            span {
+                &:nth-child(1) {
+                    top: 6px;
+                    width: 0%;
+                    left: 50%;
+                }
+
+                &:nth-child(2) {
+                    transform: rotate(45deg);
+                }
+
+                &:nth-child(3) {
+                    transform: rotate(-45deg);
+                }
+
+                &:nth-child(4) {
+                    top: 14px;
+                    width: 0%;
+                    left: 50%;
+                }
+            }
+        }
+    }
+	
+	.user-controls {
+		display: inline-block;
+		margin-left: 10px;
+		color: $white;
+		font-size: 14px;
+		
+		@include desktop() {
+			float: right;
+			margin-left: 0;
+			margin-top: 3px;
+			margin-right: 20px;
+		}
+		
+		a {
+			color: $white;
+			font-size: 14px;
+		}
+		
+		.lang {
+			display: inline-block;
+			margin-right: 12px;
+			
+			@include mobile() {
+				display: none;
+			}
+		}
+		
+		.chat-icon {
+			@include mobile() {
+				display: none;
+			}
+		}
+		
+		.icon {
+			fill: white;
+			stroke: $white;
+			margin-right: 10px;
+			
+			&.sign-out {
+				margin-right: 0;
+				margin-left: 3px;
+				height: 15px;
+				@include scale-anim();
+				
+				@include mobile() {
+					display: none;
+				}
+			}
+			
+			&.chat, &.close-chat {
+				margin: 0;
+				@include scale-anim();
+				cursor: pointer;
+				
+				@include mobile() {
+					display: none;
+				}
+			}
+		}
+		
+		.user-form.active,
+		.account-cta.active {
+			display: block;
+		}
+		
+		.user-controls-cta {
+			display: inline-block;
+			margin-left: 10px;
+			cursor: pointer;
+			
+			.photo {
+				border-radius: 25px;
+				margin-right: 5px;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+		}
+		
+		.user-form, .account-nav {
+			display: none;
+			position: absolute;
+			right: 20px;
+			background: $white;
+			padding: 20px;
+			border-radius: 5px;
+			top: 50px;
+			z-index: 2;
+			
+			@include mobile() {
+				left: 20px;
+				right: initial;
+			}
+			
+			input {
+				margin-bottom: 10px;
+				display: block;
+				border-color: $grey;
+				color: $dark-grey;
+				min-width: 200px;
+			}
+		}
+
+		.account-nav {
+			list-style-type: none;
+			
+			a {
+				color: $black;
+			}
+		}
+	}
+}

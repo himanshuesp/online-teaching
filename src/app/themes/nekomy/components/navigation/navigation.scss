@@ -1,0 +1,200 @@
+.report-page .navigation .nav-scroll {
+	height: calc(100vh - 130px);
+}
+
+.navigation {
+
+	.sidenav {
+		height: 100%;
+
+		@include desktop() {
+			width: 250px;
+		}
+	}
+
+	.nav-scroll {
+		position: relative;
+	    height: calc(100vh - 95px);
+	}
+
+	.nav-items, .mobile-nav-items, .mobile-exit-items {
+		padding: 0;
+		list-style-type: none;
+		margin-bottom: 0;
+	}
+
+	.nav-items {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		overflow-y: scroll;
+	}
+
+	.mobile-nav-items {
+		display: none;
+
+		@include mobile() {
+			display: table;
+			width: 100%;
+    		table-layout: fixed;
+			margin-top: 45px;
+			padding-bottom: 10px;
+			border-bottom: 1px solid $lighter-grey;
+
+			td {
+				padding-bottom: 15px;
+				text-align: center;
+			}
+
+			.mobile-nav-item {
+				cursor: pointer;
+
+				.icon {
+					width: 15px;
+					height: 15px;
+					fill: $grey;
+				}
+			}
+		}
+	}
+
+	.mobile-close {
+		display: none;
+
+		.close {
+			right: 20px;
+		}
+
+		@include mobile() {
+			display: block;
+		}
+	}
+
+	.mobile-exit-items {
+		max-height: 0;
+		overflow: hidden;
+		transition: .3s;
+
+		@include desktop() {
+			display: none;
+		}
+
+		&.active {
+			max-height: 120px;
+		}
+	}
+
+	.exit-item {
+		padding: 15px 10px;
+		border-bottom: 1px solid $lighter-grey;
+		cursor: pointer;
+
+		a {
+			font-size: 14px;
+			color: $grey;
+		}
+
+		.icon {
+			width: 15px;
+			height: 15px;
+			fill: $grey;
+			margin: 0 10px 0 5px;
+		}
+	}
+
+	.nav-item {
+		border-bottom: 1px solid $lighter-grey;
+		cursor: pointer;
+		font-size: 14px;
+		position: relative;
+
+		a { text-decoration: none }
+
+		.item-icon {
+			margin-left: 10px;
+		}
+
+		.title {
+			color: $grey;
+      text-align: left;
+			display: inline-block;
+			width: calc(100% - 30px);
+			padding: 15px 10px;
+			@include scale-anim(1.03);
+		}
+
+		&:hover {
+			background-color: $grey-bg;
+		}
+
+		&.has-children .arrow {
+			transition: all 0.2s ease;
+			display: inline;
+			position: absolute;
+			right: 15px;
+			top: 15px;
+			width: 15px;
+			height: 15px;
+			margin-top: 3px;
+			fill: $grey;
+
+			@include mobile() {
+				right: 20px;
+			}
+		}
+
+		&.has-children .arrow {
+			transform: rotate(90deg);
+		}
+
+		&.opened {
+			&:hover {
+				background-color: initial;
+			}
+
+			.nav-children {
+				max-height: 1000px;
+			}
+
+			&.has-children .arrow {
+				transform: rotate(-90deg);
+			}
+		}
+	}
+
+	.nav-children {
+		max-height: 0;
+		list-style-type: none;
+		padding: 0;
+		overflow: hidden;
+		transition: all 0.3s ease;
+	}
+
+	.nav-child {
+		border-top: 1px solid $lighter-grey;
+		cursor: pointer;
+		font-size: 12px;
+		border-left: 5px solid $grey;
+		background-color: $quite-light-gray;
+		transition: all 0.2s ease;
+
+		a {
+			color: $grey;
+			padding: 10px 10px 10px 15px;
+			display: block;
+		}
+
+		&:hover {
+			background-color: $lighter-grey;
+			border-left: 8px solid $grey;
+			padding-left: 10px;
+		}
+
+		&.active {
+			border-left: 10px solid $blue;
+			background-color: $lighter-grey;
+		}
+	}
+}

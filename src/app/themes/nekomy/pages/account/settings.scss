@@ -1,0 +1,38 @@
+.account-settings {
+	.profile-image {
+		width: 150px;
+		height: 150px;
+		margin: 0 auto 5px auto;
+		display: block;
+		border-radius: 100px;
+		border: 2px solid;
+		overflow: hidden;
+	    box-sizing: content-box;
+	}
+	
+	.update-photo {
+		text-align: center;
+		width: 100%;
+		margin-bottom: 20px;
+		display: block;
+		font-size: 12px;
+	}
+	
+	.account-details,
+	.personal-details {
+		input {
+			display: block;
+			width: 100%;
+			border-bottom: 1px solid $border-dark;
+			margin-bottom: 20px;
+		}
+		
+		.loader-small {
+			display: none;
+		}
+		
+		@include mobile() {
+			padding-bottom: 40px;
+		}
+	}
+}

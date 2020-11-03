@@ -1,0 +1,47 @@
+.dashboard {
+	.announcement {
+		font-size: 14px;
+		padding: 10px;
+		display: inline-block;
+		border: 1px solid $light-grey;
+		margin: 20px 20px 0 20px;
+		width: calc(100% - 40px);
+		border-radius: 5px;
+		
+		.icon {
+			margin-right: 10px;
+		}
+	}
+	
+	.columns {
+		padding: 0;
+	}
+	
+	.dashboard-title {
+		font-size: 18px;
+	}
+	
+	.items-list {
+		list-style-type: none;
+		padding: 0;
+		
+		.item {
+			padding: 10px 0;
+			border-bottom: 1px solid $light-grey;
+			border-left: 4px solid;
+    		padding-left: 10px;
+		    margin-bottom: 5px;
+		}
+	}
+	
+	.meta {
+		text-align: left;
+		padding: 0;
+	}
+	
+	.actions, .teachers {
+		.icon {
+			margin-right: 10px;
+		}
+	}
+}
